@@ -25,7 +25,7 @@ public class Lists {
 			System.out.println(value);
 		}
 		
-		// removing numbers
+		// removing numbers.
 		arrayList.remove(0); // removing the first number from the 1st position
 		arrayList.remove(arrayList.size()-1); // removing the last number
 		
