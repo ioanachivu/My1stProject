@@ -14,4 +14,8 @@ public class App2 {
 	public String setMilitary () {
 		return String.format("%02d:%02d:%02d", hour, minute, second);
 	}
+	
+	public static void main (String[] args) {
+		
+	}
 }
