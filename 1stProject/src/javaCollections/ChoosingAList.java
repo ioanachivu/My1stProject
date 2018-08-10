@@ -33,7 +33,7 @@ public class ChoosingAList {
 	// only stores unique values, great for removing duplicates
 	// not indexed, unlike lists
 	// very fast to check if a particular obj exists
-	// you can use with you own obj, but HashMap() and equals() must be implemented
+	// you can use with you own obj, but equals() & hashCode() must be implemented
 	// can be used with SortedSet interface
 	
 	// HashSet has no particular order and may change 
@@ -48,8 +48,10 @@ public class ChoosingAList {
 	//////////// MAPS //////////////
 	// key value pairs
 	// retrieving a value by key is fast
-	// you can use with you own obj, but HashMap() and equals() must be implemented
-	// can be used with SortedSet interface
+	// you can use with you own obj, but equals() & hashCode() must be implemented
+	// can be used with SortedMap interface
+	// log n < n log n < n
+	// 
 	
 	// keys in no particular order and liable to change 
 	Map<Integer, String> hashMap = new HashMap<Integer, String>();
