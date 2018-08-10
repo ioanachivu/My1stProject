@@ -1,12 +1,12 @@
 package exercitii;
 
-public class App {
-
+public class GreatestCommDiv {
+	
 	public static int gCD(int n, int m) {
 
 		if (n == m) {
 			System.out.println("The numbers are equal");
-		}
+		} 
 
 		while ((n != 0) && (m != 0)) {
 			if (n > m) {
@@ -22,8 +22,7 @@ public class App {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(gCD(120,120));
+		System.out.println(gCD(120,150));
 		
 	}
 }
-

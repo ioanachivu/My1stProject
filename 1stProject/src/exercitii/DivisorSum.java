@@ -1,6 +1,6 @@
 package exercitii;
 
-public class divisorSum {
+public class DivisorSum {
 
 	public static int sumaDivizorilor(int n) {
 	    int sum = 1; 
