@@ -1,5 +1,7 @@
 package exercitii;
 
+// find the greatest common divider of two numbers
+
 public class GreatestCommDiv {
 	
 	public static int gCD(int n, int m) {

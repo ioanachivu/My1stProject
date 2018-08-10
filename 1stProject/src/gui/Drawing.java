@@ -1,4 +1,4 @@
-package gui;
+package exercitii;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JFrame;
