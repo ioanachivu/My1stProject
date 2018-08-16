@@ -3,7 +3,7 @@ package gui;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-public class FirstGUI {
+public class BasicApp_2 {
 
 	public static void main(String[] args) {
 	
