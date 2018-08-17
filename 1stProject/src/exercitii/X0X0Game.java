@@ -2,199 +2,155 @@ package exercitii;
 
 import java.util.Scanner;
 
-//	Write a game of X and 0 in the console (optional).
-//	Displaying will be done in text mode.
-//	It requires the first player to choose a symbol, then gives the player the opportunity to put the symbol in a pen, 
-//	after which the two player will move and so on until the game ends.
-
 public class X0X0Game {
-	
-	public static boolean isOver() {
-		String[][] square = new String[3][3];
-		// verificare linii
-		if (square[0][0]==square[0][1] && square[0][0]==square[0][2]) return false;
-		if (square[1][0]==square[1][1] && square[1][0]==square[1][2]) return false;
-		if (square[2][0]==square[2][1] && square[2][0]==square[2][2]) return false;
-		// verificare coloane
-		if (square[0][0]==square[1][0] && square[0][0]==square[2][0]) return false;
-		if (square[0][1]==square[1][1] && square[0][1]==square[2][1]) return false;
-		if (square[0][2]==square[1][2] && square[0][2]==square[2][2]) return false;
-		// verificare diagonale	
-		if (square[0][0]==square[1][1] && square[0][0]==square[2][1]) return false;
-		if (square[0][2]==square[1][1] && square[0][2]==square[2][0]) return false;
-		
-		return true;
-		}
-	
-	public static void showGame(String[][] s) {
-		System.out.println("    a | b | c |");
+
+    static char[][] game = new char[][] {
+                                {' ' ,' ' ,' '}, 
+                                {' ' ,' ' ,' '}, 
+                                {' ' ,' ' ,' '} };
+	    
+    public boolean pickPos(char pos) {
+        System.out.println("Position for " + pos + " :");
+        Scanner s = new Scanner(System.in);
+        int position = s.nextInt();
+        
+        try {
+        	if (game[position / 10][position % 10] == 'x' ||
+                    game[position / 10][position % 10] == '0') {
+              System.out.println("Position is already taken, try again...");
+              return false;
+          } else {
+              game[position / 10][position % 10] = pos;
+              return true;
+          }
+        } catch (ArrayIndexOutOfBoundsException e) {
+        	System.out.println("Wrong position entered");
+        	return false;
+        }
+          
+    }
+   
+
+    public void display(char[][] game) {
+        System.out.println("    0 | 1 | 2 |");
 		System.out.println("---------------");
 		for (int i=0; i<= 2; i++) {
 			System.out.print(i + " | ");
 			for (int j= 0; j<=2; j++) {
-				System.out.print(s[i][j] + " | ");
+				System.out.print(game[i][j] + " | ");
 			} System.out.println();
 			  System.out.println("---------------");	
 		}
-	}
-
-	public static void player1Turn () {
-
-	}
+    }
 	
-	public static void player2Turn () {
-		
-	}
+    public void displayResult(char winningPlayer, int step) {
+    	if (step == 9) {
+            System.out.println("It's a tie");
+        } else {
+        	System.out.println("Congratulations!" +winningPlayer+ " has won the game"); 
+        }
+         
+    }
 	
-	
-	public static void main(String[] args) {
-		int line, column;
-		String[][] square = new String[3][3];
-		for (int i=0; i<= 2; i++) {
-			for (int j= 0; j<=2; j++) 
-				square[i][j] = " ";
-		}
-		
-		// picking the signs
-		Scanner input = new Scanner(System.in);
-		System.out.println("Player 1, pick a sign: (x or 0)");
-		String sign1 = input.nextLine();
-		String sign2;
-		if (sign1.equals("x")) { 
-			sign2="0";
-			System.out.println("Player 2 is playing with: 0");
-		} else {
-			sign2="x";
-			System.out.println("Player 2 is playing with: x");
-		}
-		
-		showGame(square);
-		
-	
-		// player 1
-		System.out.println("Player 1, please insert the line:");
-		line = input.nextInt();
+    public boolean isGameOver(int step) {
+        if (step < 5) {
+            return false;
+        }
+        // verifica linii
+        boolean result = true;
+        for (int i = 0; i < 3; i++) {
+            char check = game[i][0];
+            for (int j = 1; j < 3; j++) {
+                if (game[i][j] != check) {
+                    result = false;
+                    break;
+                }
+            }
+            if (result) {
+                return result;
+            }
+        }
+        // verifica coloane
+        result = true;
+        for (int j = 0; j < 3; j++) {
+            char check = game[0][j];
+            for (int i = 1; i < 3; i++) {
+                if (game[i][j] != check) {
+                    result = false;
+                    break;
+                }
+            }
+            if (result) {
+                return result;
+            }
+        }
+        // verifica diagPrinc
+        result = true;
+        char check = game[0][0];
+        for (int i = 1; i < 3; i++) {
+            if (game[i][i] != check) {
+                result = false;
+                break;
+            }
+        }
+        if (result) {
+            return result;
+        }
+        // verifica diagSec
+        result = true;
+        check = game[0][2];
+        for (int i = 1; i < 3; i++) {
+            if (game[i][2 - i] != check) {
+                result = false;
+                break;
+            }
+        }
+        if (result) {
+            return result;
+        }
+        return result;
+    }
+    
+    public void start() {
+        char p1, p2;
+        
+        // picking the simbols
+        System.out.println("Player 1, pick a symbol (x or 0): ");
+        Scanner s = new Scanner(System.in);
+        p1 = s.nextLine().charAt(0);
+        if (p1 == 'x') {p2 = '0';} 
+        else {p2 = 'x'; }
+        
+        int step = 0;
+        char currPlayer = p1;
+        char winningPlayer = 'N';
+        
+        display(game);
+        
+        while (!isGameOver(step)) {
+            
+           while (!pickPos(currPlayer)) {
+                pickPos(currPlayer);
+            }
+            
+            display(game);
+            
+            if (currPlayer == p1) {
+                winningPlayer = currPlayer;
+                currPlayer = p2;
+                step++;
+            } else {
+                winningPlayer = currPlayer;
+                currPlayer = p1;
+                step++;
+            }
+        } 
+        
+    	displayResult(winningPlayer, step);
 
-		System.out.println("Player 1, please insert the column:");
-		String s = input.next();
-
-		if (s.equals("a")) {
-			column = 0;
-		} else {
-			if (s.equals("b")) {
-				column = 1;
-			} else
-				column = 2;
-		}
-
-		square[line][column] = sign1;
-		showGame(square);
-
-		// player 2
-		System.out.println("Player 2, please insert the line:");
-		line = input.nextInt();
-
-		System.out.println("Player 2, please insert the column:");
-		s = input.next();
-
-		if (s.equals("a")) {
-			column = 0;
-		} else {
-			if (s.equals("b")) {
-				column = 1;
-			} else
-				column = 2;
-		}
-
-		square[line][column] = sign2;
-		showGame(square);
-		
-		// player 1
-		System.out.println("Player 1, please insert the line:");
-		line = input.nextInt();
-
-		System.out.println("Player 1, please insert the column:");
-		s = input.next();
-
-		if (s.equals("a")) {
-			column = 0;
-		} else {
-			if (s.equals("b")) {
-				column = 1;
-			} else
-				column = 2;
-		}
-
-		square[line][column] = sign1;
-		showGame(square);
-
-		// player 2
-		System.out.println("Player 2, please insert the line:");
-		line = input.nextInt();
-
-		System.out.println("Player 2, please insert the column:");
-		s = input.next();
-
-		if (s.equals("a")) {
-			column = 0;
-		} else {
-			if (s.equals("b")) {
-				column = 1;
-			} else
-				column = 2;
-		}
-
-		square[line][column] = sign2;
-		showGame(square);
-		
-		// player 1
-		System.out.println("Player 1, please insert the line:");
-		line = input.nextInt();
-
-		System.out.println("Player 1, please insert the column:");
-		s = input.next();
-
-		if (s.equals("a")) {
-			column = 0;
-		} else {
-			if (s.equals("b")) {
-				column = 1;
-			} else
-				column = 2;
-		}
-
-		square[line][column] = sign1;
-		showGame(square);
-		
-		// verify if it's over
-		if (isOver()==false) {
-			System.out.println("Game over, player 1 won!");
-			System.exit(0);
-		}
-		
-		// player 2
-		System.out.println("Player 2, please insert the line:");
-		line = input.nextInt();
-
-		System.out.println("Player 2, please insert the column:");
-		s = input.next();
-
-		if (s.equals("a")) {
-			column = 0;
-		} else {
-			if (s.equals("b")) {
-				column = 1;
-			} else
-				column = 2;
-		}
-
-		square[line][column] = sign2;
-		showGame(square);
-		
-		// verify if it's over
-		if (isOver()==false) {
-			System.out.println("Game over, player 2 won!");
-			System.exit(0);
-		}
-	}
+    }  
+    // MAIN       
+    public static void main(String args[]) {
+        new X0X0Game().start();
+    }
 }
