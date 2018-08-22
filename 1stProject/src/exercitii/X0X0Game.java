@@ -3,7 +3,8 @@ package exercitii;
 import java.util.Scanner;
 
 public class X0X0Game {
-
+	
+	char winningPlayer = 'N';
     static char[][] game = new char[][] {
                                 {' ' ,' ' ,' '}, 
                                 {' ' ,' ' ,' '}, 
@@ -11,26 +12,26 @@ public class X0X0Game {
 	    
     public boolean pickPos(char pos) {
         System.out.println("Position for " + pos + " :");
-        Scanner s = new Scanner(System.in);
-        int position = s.nextInt();
-        
-        try {
-        	if (game[position / 10][position % 10] == 'x' ||
-                    game[position / 10][position % 10] == '0') {
-              System.out.println("Position is already taken, try again...");
-              return false;
-          } else {
-              game[position / 10][position % 10] = pos;
-              return true;
-          }
-        } catch (ArrayIndexOutOfBoundsException e) {
-        	System.out.println("Wrong position entered");
-        	return false;
-        }
-          
+		try (Scanner s = new Scanner(System.in)) {
+
+			int position = s.nextInt();
+
+			try {
+				if (game[position / 10][position % 10] == 'x' 
+						|| game[position / 10][position % 10] == '0') {
+					System.out.println("Position is already taken, try again...");
+					return false;
+				} else {
+					game[position / 10][position % 10] = pos;
+					return true;
+				}
+			} catch (ArrayIndexOutOfBoundsException e) {
+				System.out.println("Wrong position entered");
+				return false;
+			}
+		}
     }
    
-
     public void display(char[][] game) {
         System.out.println("    0 | 1 | 2 |");
 		System.out.println("---------------");
@@ -44,7 +45,7 @@ public class X0X0Game {
     }
 	
     public void displayResult(char winningPlayer, int step) {
-    	if (step == 9) {
+    	if (step == 9 && winningPlayer=='N') {
             System.out.println("It's a tie");
         } else {
         	System.out.println("Congratulations!" +winningPlayer+ " has won the game"); 
@@ -108,7 +109,14 @@ public class X0X0Game {
         if (result) {
             return result;
         }
-        return result;
+        
+        if (step == 9) {
+        	winningPlayer = 'N';
+        	return true;
+        }
+        
+        return false;
+        
     }
     
     public void start() {
@@ -123,12 +131,12 @@ public class X0X0Game {
         
         int step = 0;
         char currPlayer = p1;
-        char winningPlayer = 'N';
+        
         
         display(game);
         
         while (!isGameOver(step)) {
-            
+           
            while (!pickPos(currPlayer)) {
                 pickPos(currPlayer);
             }
@@ -152,5 +160,8 @@ public class X0X0Game {
     // MAIN       
     public static void main(String args[]) {
         new X0X0Game().start();
-    }
+    	char[][] game = {{'0','0','x'}, {'x','x','0'}, {'0','0','x'}};
+//    	X0X0Game.game = game;  
+//    	new X0X0Game().isGameOver(9);
+    	}
 }
