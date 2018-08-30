@@ -7,7 +7,9 @@ public class Game {
 	int step = 0;
 	Player player1 = new Player();
 	Player player2 = new Player();
-	Player currPlayer = new Player();
+	Player currPlayer;
+	Player winningPlayer;
+	GameState gs = GameState.INPROGRESS;
 	
 	Cell[][] cells = new Cell[][] {
 		{new Cell(), new Cell(), new Cell()},
@@ -21,12 +23,14 @@ public class Game {
 		pickSimbol();
 		display();
 		
-		while (!isGameOver(step)) {
+		while (!isGameOver(step)) {	
 			pickPosition(currPlayer);
 			display();
 			changePlayer(currPlayer);
 			step++;
 		}
+		
+		displayResult(step);
 	}
 	
 	// pick symbol method
@@ -74,6 +78,7 @@ public class Game {
 		}
 	}
 
+	
 	// change players
 	public void changePlayer(Player currPlayer) {
 
@@ -84,74 +89,41 @@ public class Game {
 		}
 	}
 	
+	public void displayResult(int step) {
+    	if (step == 9 && gs == GameState.TIE) {
+            System.out.println("It's a tie");
+        } else if(gs==GameState.WIN) {
+        	System.out.println("Congratulations!" + winningPlayer.getSimbol() + " has won the game"); 
+        }
+         
+    }
 	
     public boolean isGameOver(int step) {
     
+    	boolean result;
+    	
         if (step < 5) {
             return false;
         }
         
-        // line verification
-        boolean resultLineVerification = board.lineVerification();
-        
-        if(resultLineVerification == true) {
+        if(
+        		board.isGameOverOnLine() ||
+        		board.isGameOverOnColumn() ||
+        		board.isGameOverOnDiagonal1() ||
+        		board.isGameOverOnDiagonal2()
+			 ) {
+        	gs = GameState.WIN;
+        	//
+        	winningPlayer = (currPlayer == player1) ? player2 : player1;
         	return true;
         }
         
-        // afisare cine a castigat
+        if (step == 9) {
+        	gs = GameState.TIE;
+        	return true;
+        }
         
-        // verificare coloana
-        
-        // verificare diagonala
-        
-        // 
-        
-        return false; // return temporrar
-        
-//        // verifica coloane
-//        result = true;
-//        for (int j = 0; j < 3; j++) {
-//            char check = game[0][j];
-//            for (int i = 1; i < 3; i++) {
-//                if (game[i][j] != check) {
-//                    result = false;
-//                    break;
-//                }
-//            }
-//            if (result) {
-//                return result;
-//            }
-//        }
-//        // verifica diagPrinc
-//        result = true;
-//        char check = game[0][0];
-//        for (int i = 1; i < 3; i++) {
-//            if (game[i][i] != check) {
-//                result = false;
-//                break;
-//            }
-//        }
-//        if (result) {
-//            return result;
-//        }
-//        // verifica diagSec
-//        result = true;
-//        check = game[0][2];
-//        for (int i = 1; i < 3; i++) {
-//            if (game[i][2 - i] != check) {
-//                result = false;
-//                break;
-//            }
-//        }
-//        if (result) {
-//            return result;
-//        }
-//        
-//        if (step == 9) {
-//        	winningPlayer = 'N';
-//        	return true;
-//        }
-        
+        return false;
     }
 
 

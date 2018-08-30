@@ -2,7 +2,7 @@ package exercitii.ticTacToe;
 
 public class Cell{
 
-	char simbol;
+	private char simbol;
 	
 	public char getSimbol() {
 		return simbol;
