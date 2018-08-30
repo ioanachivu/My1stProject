@@ -1,5 +1,7 @@
 package hospitalApp;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ScheduledExecutorService;
 
 import exercitii.App;
@@ -16,11 +18,11 @@ public class Main {
 		Doctor Behr = new Doctor("Gus Behr", "563784");
 			
 		// adding the doctor objects to the doctor list
-		clinic.doctorList.add(Gilmore);
-		clinic.doctorList.add(Marble);
-		clinic.doctorList.add(Behr);
+		clinic.addDoctor(Gilmore);
+		clinic.addDoctor(Marble);
+		clinic.addDoctor(Behr);
 		
-		// adding some patients objects
+		// creating some patients objects
 		Patient SarahMiller = new Patient("Sarah Miller", "458967123845");
 		Patient MichaelCross = new Patient("Michael Cross", "558945389675");
 		Patient JessyDawn = new Patient("Jessy Dawn", "2189671286317");
@@ -34,22 +36,24 @@ public class Main {
 		clinic.patientList.add(ChristineDeen);
 		clinic.patientList.add(JaneDowe);
 		
-		// creating some appointments
-		Appointment appointment1 = new Appointment("9:00", Gilmore, SarahMiller);
-		Appointment appointment2 = new Appointment("10:00", Gilmore, MichaelCross);
-		Appointment appointment3 = new Appointment("11:00", Marble, JessyDawn);
-		Appointment appointment4 = new Appointment("12:00", Marble, ChristineDeen);
-		Appointment appointment5 = new Appointment("13:00", Behr, JaneDowe);
+		// adaugi programari manual
 		
-		// creating the schedule
-		clinic.schedule.put(Gilmore, appointment1);
-		clinic.schedule.put(Gilmore, appointment2);
-		clinic.schedule.put(Marble, appointment3);
-		clinic.schedule.put(Marble, appointment4);
-		clinic.schedule.put(Behr, appointment5);
+		Appointment[] listAppointment = new Appointment[15];
+		listAppointment[0] = new Appointment ("9;00", Gilmore, SarahMiller);
+		listAppointment[0] = new Appointment ("9;30", Gilmore, MichaelCross);
 		
-		// add appointment
+		clinic.schedule.put(Gilmore, listAppointment);
+		
+		
+		// cer de la tastatura doctor, pacient, si ora
 		clinic.addAppointment();
+		
+		
+		// verific daca pot adauga pacient la doctor in ora specificata
+		
+
+		// add appointment
+		//clinic.addAppointment();
 		
 	} 
 	

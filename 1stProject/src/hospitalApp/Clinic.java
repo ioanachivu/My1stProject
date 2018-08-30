@@ -14,11 +14,14 @@ public class Clinic {
 	// creating a patient list
 	Set<Patient> patientList = new HashSet<>();
 	
-	// creating the array of appointments
-	Appointment[] appointments = new Appointment[15];
-	
 	// creating the schedule
-	Map<Doctor, Appointment> schedule = new HashMap<>();
+	Map<Doctor, Appointment[]> schedule = new HashMap<>();
+	
+	// add doctor method
+	public void addDoctor (Doctor d) {
+		doctorList.add(d);
+	}
+	
 	
 	// add appointment from keyboard
 	public void addAppointment () {
@@ -26,8 +29,33 @@ public class Clinic {
 		Scanner in = new Scanner(System.in);
 		String doctor = in.nextLine();
 		
-
+		/*
+		System.out.println("What hour should the appointment be?");
+		String hour = in.nextLine();
+		
+		System.out.println("The name of the patient?");
+		String name = in.nextLine();
+		*/
+		
+		for (Doctor d: schedule.keySet()) {
+			// caut doctorul
+			if (d.getName().equals(doctor)) {
+		
+				Appointment[] app = schedule.get(d);
+				
+				int nrProgramari = 0;
+				
+				for(int i=0; i < app.length; i++) {
+					if(app[i] instanceof Appointment) {
+						nrProgramari++;
+					}
+				}
+				
+				//System.out.println("doctor gasit" + doctor);
+			} else {
+				System.out.println("you entered a wrong doctor");
+			}
+		}
 	}
 	
-
 }
