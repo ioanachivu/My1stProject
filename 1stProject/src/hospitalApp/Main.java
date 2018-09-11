@@ -13,40 +13,38 @@ public class Main {
 		Clinic clinic = new Clinic();
 		
 		// creating some doctor objects
-		Doctor Gilmore = new Doctor("Mike Gilmore", "485691");
-		Doctor Marble = new Doctor("Jason Marble", "897563");
-		Doctor Behr = new Doctor("Gus Behr", "563784");
+		Doctor Gilmore = new Doctor("Mike Gilmore","2569874563","485691");
+		Doctor Marble = new Doctor("Jason Marble","6589743681","897563");
 			
 		// adding the doctor objects to the doctor list
 		clinic.addDoctor(Gilmore);
 		clinic.addDoctor(Marble);
-		clinic.addDoctor(Behr);
 		
 		// creating some patients objects
-		Patient SarahMiller = new Patient("Sarah Miller", "458967123845");
-		Patient MichaelCross = new Patient("Michael Cross", "558945389675");
-		Patient JessyDawn = new Patient("Jessy Dawn", "2189671286317");
-		Patient ChristineDeen = new Patient("Christine Deen", "528967485697");
-		Patient JaneDowe = new Patient("Jane Dowe", "856367125641");
+		Patient SarahMiller = new Patient("Sarah Miller", "458967123845", 1025);
+		Patient MichaelCross = new Patient("Michael Cross", "558945389675",1359);
+		Patient JessyDawn = new Patient("Jessy Dawn", "2189671286317",1489);
+		Patient ChristineDeen = new Patient("Christine Deen", "528967485697",7863);
+		Patient JaneDowe = new Patient("Jane Dowe", "856367125641",5812);
 		
 		// adding the patient objects to the list
-		clinic.patientList.add(SarahMiller);
-		clinic.patientList.add(MichaelCross);
-		clinic.patientList.add(JessyDawn);
-		clinic.patientList.add(ChristineDeen);
-		clinic.patientList.add(JaneDowe);
+		clinic.addPatient(SarahMiller);
+		clinic.addPatient(MichaelCross);
+		clinic.addPatient(JessyDawn);
+		clinic.addPatient(ChristineDeen);
+		clinic.addPatient(JaneDowe);
 		
 		// adaugi programari manual
 		
-		Appointment[] listAppointment = new Appointment[15];
-		listAppointment[0] = new Appointment ("9;00", Gilmore, SarahMiller);
-		listAppointment[0] = new Appointment ("9;30", Gilmore, MichaelCross);
+		Appointment app1 = new Appointment ("9;00", Gilmore, SarahMiller);
+		Appointment app2 = new Appointment ("9;30", Gilmore, MichaelCross);
 		
-		clinic.schedule.put(Gilmore, listAppointment);
+		clinic.addAppointment(app1);
+		clinic.addAppointment(app2);
 		
 		
 		// cer de la tastatura doctor, pacient, si ora
-		clinic.addAppointment();
+		//clinic.addAppointment();
 		
 		
 		// verific daca pot adauga pacient la doctor in ora specificata

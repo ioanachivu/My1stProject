@@ -1,21 +1,13 @@
 package hospitalApp;
 
-public class Doctor {
+public class Doctor extends Person {
 
-	private String name;
 	private String docID;
 	
-	public Doctor(String name, String docID) {
-		this.name = name;
-		this.docID = docID;
-	}
 	
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	public Doctor(String name, String SSN, String docID) {
+		super(name, SSN);
+		this.docID = docID;
 	}
 
 	public String getDocID() {
@@ -24,5 +16,7 @@ public class Doctor {
 
 	public void setDocID(String docID) {
 		this.docID = docID;
-	}	
+	}
+	
+	
 }

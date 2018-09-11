@@ -30,6 +30,10 @@ public class Appointment {
 		this.patientToSee = patientToSee;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Created: " + hour + ", doctor:" + doctorAppointed + ", patient:" + patientToSee;
+	}
+
 	
 }
