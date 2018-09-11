@@ -2,7 +2,9 @@ package exercitii.ticTacToe;
 
 public enum GameState {
 
-	WIN,  
+	X_WIN,  
+	X_LOSE,
 	TIE, 
-	INPROGRESS
+	IN_PROGRESS;
+
 }

@@ -1,14 +1,14 @@
 package exercitii.ticTacToe;
 
 public class Player {
-	char simbol;
+	PieceType simbol;
 	
-	public char getSimbol() {
+	public PieceType getSimbol() {
 		return simbol;
 	}
 
-	public void setSimbol(char simbol) {
-		this.simbol = simbol;
+	public void setSimbol(PieceType pt) {
+		this.simbol = pt;
 	}
 	
 }

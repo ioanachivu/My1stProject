@@ -7,9 +7,7 @@ public class Game {
 	int step = 0;
 	Player player1 = new Player();
 	Player player2 = new Player();
-	Player currPlayer;
-	Player winningPlayer;
-	GameState gs = GameState.INPROGRESS;
+	Player currPlayer;	
 	
 	Cell[][] cells = new Cell[][] {
 		{new Cell(), new Cell(), new Cell()},
@@ -21,111 +19,125 @@ public class Game {
 	public void playGame() {
 
 		pickSimbol();
-		display();
+		board.display();
 		
 		while (!isGameOver(step)) {	
 			pickPosition(currPlayer);
-			display();
+			board.display();
 			changePlayer(currPlayer);
 			step++;
 		}
-		
-		displayResult(step);
+		displayResult(board.gs);
 	}
 	
 	// pick symbol method
-	public void pickSimbol () {
-		System.out.println("Player 1, pick a symbol (x or 0): ");
-	    Scanner s = new Scanner(System.in);
-	    
-	    player1.setSimbol (s.nextLine().charAt(0));
-	    if (player1.equals('x')) {
-	    	player2.setSimbol('0');} 
-	    else {player2.setSimbol('x');}
-	    
-	    currPlayer = player1;
+	public void pickSimbol() {
+		int i = 0;
+		do {
+			System.out.println("Player 1, pick a symbol: " + PieceType.CROSS + " or " + PieceType.ZERO);
+			Scanner s = new Scanner(System.in);
+			char type = s.next().charAt(0);
+
+			if (type == 'x' || type == '0') {
+
+				switch (type) {
+				case 'x':
+					player1.setSimbol(PieceType.CROSS);
+					break;
+				case '0':
+					player1.setSimbol(PieceType.ZERO);
+					break;
+				}
+
+				if (player1.getSimbol().equals(PieceType.CROSS)) {
+					player2.setSimbol(PieceType.ZERO);
+				} else {
+					player2.setSimbol(PieceType.CROSS);
+				}
+
+				currPlayer = player1;
+				i++;
+
+			} else
+				System.out.println("Wrong symbol entered, try again");
+		} while (i == 0);
+
 	}
-    
-	// display the board method
-	private void display() {
-		System.out.println("    0 | 1 | 2 |");
-		System.out.println("---------------");
-		for (int i = 0; i <= 2; i++) {
-			System.out.print(i + " | ");
-			for (int j = 0; j <= 2; j++) {
-				System.out.print(board.getCell(i, j).getSimbol() + " | ");
-			}
-			System.out.println(); 
-			System.out.println("---------------");
-		}
-		}
 	
 	// pick position method
-	public void pickPosition (Player currPlayer) {
-		System.out.println("Row for player with symbol " + currPlayer.getSimbol() + " :");
-		Scanner s = new Scanner(System.in);
-		int row = s.nextInt();
-		
-		System.out.println("Column for player with symbol " + currPlayer.getSimbol() + " :");
-		int column = s.nextInt();
-		
-		Cell c = board.getCell(row, column);
-		
-		if (c.getSimbol() == 'x' || c.getSimbol() == '0') {
-			System.out.println("Position is already taken, try again...");
-		} else {
-			c.setSimbol(currPlayer.getSimbol());
-		}
+	public void pickPosition(Player currPlayer) {
+		int m = 0;
+
+		do {
+			System.out.println("Row for player with symbol " + currPlayer.getSimbol() + " :");
+			Scanner s = new Scanner(System.in);
+			int row = s.nextInt();
+
+			System.out.println("Column for player with symbol " + currPlayer.getSimbol() + " :");
+			int column = s.nextInt();
+
+			if ((row == 0 || row == 1 || row == 2) &&
+					(column == 0 || column == 1 || column == 2)) {
+				Cell c = board.getCell(row, column);
+
+				if (c.getSimbol().equals(PieceType.CROSS) || c.getSimbol().equals(PieceType.ZERO)) {
+					System.out.println("Position is already taken, try again...");
+				} else {
+					c.setSimbol(currPlayer.getSimbol());
+					m++;
+				}
+			} else {
+				System.out.println("Wrong position entered, please try again");
+				break;
+			}
+		} while (m == 0);
+
 	}
 
 	
 	// change players
 	public void changePlayer(Player currPlayer) {
 
-		if (currPlayer.getSimbol() == 'x') {
-			currPlayer.setSimbol('0');
+		if (currPlayer.getSimbol().equals(PieceType.CROSS)) {
+			currPlayer.setSimbol(PieceType.ZERO);
 		} else {
-			currPlayer.setSimbol('x');
+			currPlayer.setSimbol(PieceType.CROSS);
 		}
 	}
 	
-	public void displayResult(int step) {
-    	if (step == 9 && gs == GameState.TIE) {
-            System.out.println("It's a tie");
-        } else if(gs==GameState.WIN) {
-        	System.out.println("Congratulations!" + winningPlayer.getSimbol() + " has won the game"); 
-        }
-         
+	// display result method
+	public void displayResult(GameState gs) {
+		
+		switch (board.gs) {
+		case X_WIN:
+			System.out.println(" X won!");;
+			break;
+		case X_LOSE:
+			System.out.println(" 0 won!");
+			break;
+		case TIE:
+			System.out.println("It's a tie!");
+			break;
+		}
     }
 	
     public boolean isGameOver(int step) {
-    
-    	boolean result;
-    	
-        if (step < 5) {
-            return false;
-        }
-        
-        if(
-        		board.isGameOverOnLine() ||
-        		board.isGameOverOnColumn() ||
-        		board.isGameOverOnDiagonal1() ||
-        		board.isGameOverOnDiagonal2()
-			 ) {
-        	gs = GameState.WIN;
-        	//
-        	winningPlayer = (currPlayer == player1) ? player2 : player1;
-        	return true;
-        }
-        
-        if (step == 9) {
-        	gs = GameState.TIE;
-        	return true;
-        }
-        
-        return false;
-    }
+		if (step < 5) {
+			return false;
+		}
 
+		if (board.isGameOverOnLine()|| 
+			board.isGameOverOnColumn() || 
+			board.isGameOverOnDiagonal1() || 
+			board.isGameOverOnDiagonal2()) {
+			return true;
+		}
 
-	
+		if (step == 9) {
+			board.gs = GameState.TIE;
+			return true;
+		}
+
+		return false;
+    }	
 }

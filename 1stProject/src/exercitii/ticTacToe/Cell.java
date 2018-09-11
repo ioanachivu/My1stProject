@@ -2,13 +2,13 @@ package exercitii.ticTacToe;
 
 public class Cell{
 
-	private char simbol;
+	private PieceType symbol = PieceType.EMPTY;
 	
-	public char getSimbol() {
-		return simbol;
+	public PieceType getSimbol() {
+		return symbol;
 	}
 
-	public void setSimbol(char simbol) {
-		this.simbol = simbol;
+	public void setSimbol(PieceType simbol) {
+		this.symbol = simbol;
 	}
 }
