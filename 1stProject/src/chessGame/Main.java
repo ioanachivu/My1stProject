@@ -1,6 +1,6 @@
-package exercitii.chess;
+package chessGame;
 
-import exercitii.ticTacToe.Game;
+import ticTacToeGame.Game;
 
 public class Main {
 

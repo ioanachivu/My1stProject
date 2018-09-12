@@ -1,4 +1,4 @@
-package teorie;
+package lessons;
 
 public class StringBuilderFormat {
 	public static void main(String[] args) {

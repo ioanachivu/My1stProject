@@ -1,4 +1,4 @@
-package exercitii;
+package exercises;
 
 // find the greatest common divider of two numbers
 

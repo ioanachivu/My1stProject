@@ -1,4 +1,4 @@
-package exercitii;
+package exercises;
 
 public class DivisorSum {
 

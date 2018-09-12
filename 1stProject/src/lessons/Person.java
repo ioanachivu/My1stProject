@@ -1,4 +1,4 @@
-package teorie;
+package lessons;
 
 public class Person {
 	String name;

@@ -1,4 +1,4 @@
-package teorie;
+package lessons;
 
 class Frog {
 	private String name;

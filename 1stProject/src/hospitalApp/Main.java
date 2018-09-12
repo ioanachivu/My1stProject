@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ScheduledExecutorService;
 
-import exercitii.App;
+import exercises.App;
 
 public class Main {
 

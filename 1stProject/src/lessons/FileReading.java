@@ -1,4 +1,4 @@
-package teorie;
+package lessons;
 
 import java.io.BufferedReader;
 import java.io.File;

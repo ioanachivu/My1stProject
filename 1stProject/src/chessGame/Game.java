@@ -1,4 +1,4 @@
-package exercitii.chess;
+package chessGame;
 
 public class Game {
 
