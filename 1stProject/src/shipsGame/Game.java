@@ -35,11 +35,29 @@ public class Game {
 	}
 	
 	private void checkUserGuess (String userGuess) {
+		noOfGuesses++;
+		String result = "miss";
 		
+		for (Ship s: shipsList) {
+			result = s.checkYourself(userGuess);
+			if(result.equals("hit")) {
+				break;
+			}
+			if (result.equals("kill")) {
+				shipsList.remove(s);
+				break;
+			}
+		}
+		System.out.println(result);
 	}
 	
 	private void finishGame() {
-		
+		System.out.println("All ships are under water");
+		if (noOfGuesses<=18) {
+			System.out.println("It only took you "+noOfGuesses+" guesses");
+		} else {
+			System.out.println("Took you too long "+noOfGuesses+ " guesses");
+		}
 	}
 	
 	public static void main(String[] args) {
