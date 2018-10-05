@@ -7,27 +7,29 @@ import javax.swing.*;
 
 public class MainFrame extends JFrame {
 
-	private JTextArea textArea = new JTextArea();
+	private TextPanel textPanel = new TextPanel();
 	private JButton button = new JButton("Click me");
 	
+	// constructor
 	public MainFrame() {
 		super("Hello World!");
 		
-		setLayout(new BorderLayout());
-		
-		add(textArea, BorderLayout.CENTER);
-		
-		add(button, BorderLayout.SOUTH);
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				textArea.append("Hello\n");
+				textPanel.appendText("Hello\n");
 				
 			}
 		});
 		
-		setSize(400,500);
+		setLayout(new BorderLayout());
+		add(textPanel, BorderLayout.CENTER);
+		add(button, BorderLayout.SOUTH);
+		
+		setSize(400,400);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);	
+		
 	}
 }
