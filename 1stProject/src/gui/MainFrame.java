@@ -9,6 +9,7 @@ public class MainFrame extends JFrame {
 
 	private TextPanel textPanel = new TextPanel();
 	private JButton button = new JButton("Click me");
+	private Toolbar toolbar = new Toolbar();
 	
 	// constructor
 	public MainFrame() {
@@ -25,6 +26,7 @@ public class MainFrame extends JFrame {
 		setLayout(new BorderLayout());
 		add(textPanel, BorderLayout.CENTER);
 		add(button, BorderLayout.SOUTH);
+		add(toolbar, BorderLayout.NORTH);
 		
 		setSize(400,400);
 		setLocationRelativeTo(null);
