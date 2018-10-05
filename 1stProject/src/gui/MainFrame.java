@@ -14,6 +14,8 @@ public class MainFrame extends JFrame {
 	// constructor
 	public MainFrame() {
 		super("Hello World!");
+		setLayout(new BorderLayout());
+		toolbar.setTextPanel(textPanel);
 		
 		button.addActionListener(new ActionListener() {
 			@Override
@@ -25,8 +27,8 @@ public class MainFrame extends JFrame {
 		
 		setLayout(new BorderLayout());
 		add(textPanel, BorderLayout.CENTER);
-		add(button, BorderLayout.SOUTH);
 		add(toolbar, BorderLayout.NORTH);
+
 		
 		setSize(400,400);
 		setLocationRelativeTo(null);
