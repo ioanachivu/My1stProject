@@ -11,7 +11,6 @@ public class Toolbar extends JPanel implements ActionListener {
 		
 	private JButton button1 = new JButton("Hello");
 	private JButton button2 = new JButton("Goodbye");
-	
 	private StringListener stringListener;
 
 	public Toolbar () { 
