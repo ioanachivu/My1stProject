@@ -9,6 +9,7 @@ public class MainFrame extends JFrame {
 
 	private TextPanel textPanel = new TextPanel();
 	private Toolbar toolbar = new Toolbar();
+	private FormPanel formPanel = new FormPanel();
 	
 	// constructor
 	public MainFrame() {
@@ -24,11 +25,12 @@ public class MainFrame extends JFrame {
 		
 		add(textPanel, BorderLayout.CENTER);
 		add(toolbar, BorderLayout.SOUTH);
+		add(formPanel, BorderLayout.WEST); 
 		
+		// basic must-use settings for frames
 		setSize(400,400);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);	
-		
 	}
 }
