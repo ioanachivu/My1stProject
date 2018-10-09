@@ -8,27 +8,22 @@ import javax.swing.*;
 public class MainFrame extends JFrame {
 
 	private TextPanel textPanel = new TextPanel();
-	private JButton button = new JButton("Click me");
 	private Toolbar toolbar = new Toolbar();
 	
 	// constructor
 	public MainFrame() {
 		super("Hello World!");
 		setLayout(new BorderLayout());
-		toolbar.setTextPanel(textPanel);
 		
-		button.addActionListener(new ActionListener() {
+		toolbar.setStringListener(new StringListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				textPanel.appendText("Hello\n");
-				
+			public void stringEmitted(String text) {
+				textPanel.appendText(text);
 			}
 		});
 		
-		setLayout(new BorderLayout());
 		add(textPanel, BorderLayout.CENTER);
-		add(toolbar, BorderLayout.NORTH);
-
+		add(toolbar, BorderLayout.SOUTH);
 		
 		setSize(400,400);
 		setLocationRelativeTo(null);
