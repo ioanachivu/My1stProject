@@ -36,7 +36,7 @@ public class FormPanel  extends JPanel {
 		setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
 		
-		//---------------------- first row
+		//////////////////////////// First row /////////////////////////////////////
 		gc.weightx = 1;
 		gc.weighty = 0.1;
 		
@@ -53,7 +53,7 @@ public class FormPanel  extends JPanel {
 		add(nameField, gc);
 		
 		
-		// --------------------- second row
+		//////////////////////////// Second row ///////////////////////////////////////
 		// changing coordinates to place occupation label
 		gc.weightx = 1;
 		gc.weighty = 0.1;
@@ -69,7 +69,7 @@ public class FormPanel  extends JPanel {
 		gc.anchor = GridBagConstraints.LINE_START;
 		add(occupationField, gc);
 		
-		// adding the OK button
+		///////////////////////////// Adding the OK button ///////////////////////////////
 		gc.weightx = 1;
 		gc.weighty = 3;
 		
