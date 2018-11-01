@@ -12,9 +12,16 @@ public class Drawing extends JFrame {
 		g.setColor(Color.CYAN);
 		g.fillOval(350, 350, 50, 50);
 		
-		g.setColor(Color.ORANGE);
+		// make a random colored rectangle
+		int red = (int) (Math.random()*256);
+		int green = (int) (Math.random()*256);
+		int blue = (int) (Math.random()*256);
+		Color randomColor = new Color(red, green, blue);
+		
+		g.setColor(randomColor);
 		g.fillRect(400, 400, 50, 80);
 		
+		// add an image to the frame
 		Image img = new ImageIcon("D://My Pictures//diferite//apus.jpg").getImage();
 		g.drawImage(img,0,0,400,250,this);
 	}
