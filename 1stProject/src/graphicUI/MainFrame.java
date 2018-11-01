@@ -1,4 +1,4 @@
-package gui;
+package graphicUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +20,15 @@ public class MainFrame extends JFrame {
 			@Override
 			public void stringEmitted(String text) {
 				textPanel.appendText(text);
+			}
+		});
+		
+		formPanel.setFormListener(new FormListener() {
+			public void formEventOccured (FormEvent e) {
+				String name = e.getName();
+				String occupation = e.getOccupation();
+				
+				textPanel.appendText(name+" : "+occupation + "\n");
 			}
 		});
 		

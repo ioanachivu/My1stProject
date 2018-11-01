@@ -1,7 +1,10 @@
-package gui;
+package graphicUI;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -21,11 +24,27 @@ public class FormPanel  extends JPanel {
 	private JTextField occupationField = new JTextField(10);
 	private JButton okButton = new JButton("OK");
 	
+	private FormListener formListener;
+	
+	
 	public FormPanel() {
 		// setting the preferred size of the panel
 		Dimension dim = getPreferredSize();
 		dim.width = 300;
 		setPreferredSize(dim);
+		
+		okButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String name = nameField.getText();
+				String occupation = occupationField.getText();
+				
+				FormEvent ev = new FormEvent(this, name, occupation);
+				
+				if (formListener != null) {
+					formListener.formEventOccured(ev);
+				}
+			}
+		});
 
 		// creating a very visible border 
 		TitledBorder innerBorder = new TitledBorder("New Account");
@@ -78,5 +97,9 @@ public class FormPanel  extends JPanel {
 		gc.anchor = GridBagConstraints.FIRST_LINE_START;
 		add(okButton, gc);
 		
+	}
+	
+	public void setFormListener (FormListener listener) {
+		this.formListener = formListener;
 	}
 }

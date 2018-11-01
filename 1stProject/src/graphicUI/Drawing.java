@@ -1,4 +1,4 @@
-package gui;
+package graphicUI;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JFrame;

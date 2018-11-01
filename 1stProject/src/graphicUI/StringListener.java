@@ -1,4 +1,4 @@
-package gui;
+package graphicUI;
 
 public interface StringListener {
 

@@ -1,4 +1,4 @@
-package gui;
+package graphicUI;
 import javax.swing.*;
 
 public class FirstApp {

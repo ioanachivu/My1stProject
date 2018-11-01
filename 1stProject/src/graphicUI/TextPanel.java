@@ -1,4 +1,4 @@
-package gui;
+package graphicUI;
 import java.awt.BorderLayout;
 
 import javax.swing.JPanel;

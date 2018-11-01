@@ -16,16 +16,11 @@ package exercises;
 	    public static void main(String[] args) {
 	        int[] vector = null;
 	        Integer result = null;
-	       // try (Scanner scanner = new Scanner(new File(args[0]))) {
 	            String[] numberTokens = args[0].split(",");
 	            vector = new int[numberTokens.length];
 	            for (int i = 0; i < numberTokens.length; i++) {
 	                vector[i] = Integer.parseInt(numberTokens[i]);
-	            }
-//	        }
-//	        catch (FileNotFoundException ex) {
-//	            throw new RuntimeException(ex);
-//	        }       
+	            }       
 	        
 	        result = Integer.MAX_VALUE;    
 	        for (int i=0; i<vector.length; i++) {
