@@ -1,8 +1,8 @@
 package graphicUI;
 import java.awt.*;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
+import javax.swing.*;
 
+@SuppressWarnings("serial")
 public class Drawing extends JFrame {
 
 	@Override
@@ -24,6 +24,11 @@ public class Drawing extends JFrame {
 		// add an image to the frame
 		Image img = new ImageIcon("D://My Pictures//diferite//apus.jpg").getImage();
 		g.drawImage(img,0,0,400,250,this);
+		
+		//make a gradient oval
+		GradientPaint gradient = new GradientPaint(500,500,Color.CYAN,600,600,Color.DARK_GRAY);
+		((Graphics2D) g).setPaint(gradient);
+		g.fillOval(500, 500, 100, 100);
 	}
 	
 	public Drawing() {
