@@ -1,10 +1,10 @@
-package graphicUI;
+package headFirstJava.GUI;
 import java.awt.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
 public class Drawing extends JFrame {
-
+	
 	@Override
 	public void paint(Graphics g) {
 		g.drawRect(300, 300, 50, 50);
