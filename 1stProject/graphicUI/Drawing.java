@@ -5,19 +5,8 @@ import javax.swing.JFrame;
 
 public class Drawing extends JFrame {
 
-	public Drawing() {
-		setSize(300, 300);
-		setVisible(true);
-	}
-	
-	public static void main(String[] args) {
-		new Drawing();
-	}
-	
 	@Override
 	public void paint(Graphics g) {
-		//super.paint(g);
-		
 		g.drawRect(50, 50, 50, 50);
 		
 		g.setColor(Color.CYAN);
@@ -26,4 +15,17 @@ public class Drawing extends JFrame {
 		g.setColor(Color.ORANGE);
 		g.fillRect(150, 150, 50, 80);
 	}
+	
+	public Drawing() {
+		setSize(300, 300);
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+	}
+	
+	public static void main(String[] args) {
+		new Drawing();
+	}
+	
+	
 }
