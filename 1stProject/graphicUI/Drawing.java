@@ -4,15 +4,14 @@ import java.awt.Graphics;
 import javax.swing.JFrame;
 
 public class Drawing extends JFrame {
-	private static final long serialVersionUID = 1L;
 
-	public static void main(String[] args) {
-		new Drawing();
-	}
-	
 	public Drawing() {
 		setSize(300, 300);
 		setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		new Drawing();
 	}
 	
 	@Override
