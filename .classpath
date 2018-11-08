@@ -2,5 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="1stProject"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/commons-lang3-3.8.1/commons-lang3-3.8.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
