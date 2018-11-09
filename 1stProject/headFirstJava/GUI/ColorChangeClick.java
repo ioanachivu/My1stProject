@@ -17,6 +17,7 @@ public class ColorChangeClick {
 	JButton colorButton;
 	JButton labelButton;
 
+	// constructor
 	public ColorChangeClick() {
 		frame = new JFrame("I am changing color");
 		label = new JLabel("I'm a label");

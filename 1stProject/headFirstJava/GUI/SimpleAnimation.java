@@ -11,6 +11,7 @@ public class SimpleAnimation {
 	int x = 70;
 	int y = 70;
 	
+	// constructor
 	public SimpleAnimation () {
 		JFrame frame = new JFrame();
 		MyDrawPanel drawPanel = new MyDrawPanel();

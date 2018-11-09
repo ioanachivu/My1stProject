@@ -31,6 +31,7 @@ public class Drawing extends JFrame {
 		g.fillOval(500, 500, 100, 100);
 	}
 	
+	// constructor
 	public Drawing() {
 		setSize(600, 600);
 		setVisible(true);
