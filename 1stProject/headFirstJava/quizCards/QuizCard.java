@@ -2,18 +2,30 @@ package headFirstJava.quizCards;
 
 public class QuizCard {
 
-	public QuizCard(String text, String text2) {
-		// TODO Auto-generated constructor stub
+	public String getQuestion() {
+		return question;
 	}
 
-	public String getQuestion() {
-		// TODO Auto-generated method stub
-		return null;
+	public void setQuestion(String question) {
+		this.question = question;
 	}
 
 	public String getAnswer() {
-		// TODO Auto-generated method stub
-		return null;
+		return answer;
 	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
+	public String question;
+	public String answer;
+	
+	public QuizCard(String text, String text2) {
+		question = text;
+		answer = text2;
+	}
+
+	
 
 }
