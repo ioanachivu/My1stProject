@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class ScriereFisier {
+public class FileWriting {
 	public static void main(String[] args) {
 
 		File fisier = new File("D:\\PROGRAME\\eclipse-workspace\\My1stProject\\src\\tutorials\\exercitiu.txt");
