@@ -33,7 +33,8 @@ public class Example implements Runnable {
 		}
 	}
 	
-	private void makeWithdrawal(int amount) {
+	// making the method synchronized so that only one thread at a time can access it
+	private synchronized void makeWithdrawal(int amount) {
 		if(account.getBalance() >= amount) {
 			System.out.println(Thread.currentThread().getName() + " is about to withdraw");
 			
