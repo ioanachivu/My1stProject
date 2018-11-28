@@ -5,27 +5,32 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class FileReading {
 	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in); 
+		System.out.println("Enter a string value: ");
 
-		// String from the console:
-		Scanner input = new Scanner(System.in); // create scanner object
-		System.out.println("Enter a string value: "); // cout<<
+		String value = input.nextLine(); 
+		System.out.println("You entered: " + value); 
 
-		String value = input.nextLine(); // cin>>
-		System.out.println("You entered: " + value); // tell them what they entered
-
-		// Buffered Read // reads the file line by line
+		List<String> list = new ArrayList<String>();
 
 		File file = new File("D:/PROGRAME/eclipse-workspace/MyFirstProject/src/tutorials/ioana.txt");
-
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 
-			String st;
-			while ((st = br.readLine()) != null)
-				System.out.println(st);
+			String line;
+			while ((line = br.readLine()) != null) {
+				// splitting a line in a file and adding it to the list
+				String[] tokens = line.split("/");
+				list.add(tokens[0]);
+			}
+		
+			
+			
 
 		} catch (FileNotFoundException e) {
 			System.out.println("Can't find file: " + file.toString());
