@@ -10,14 +10,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FileReading {
-	public static void main(String[] args) {
-		Scanner input = new Scanner(System.in); 
-		System.out.println("Enter a string value: ");
+	public static void main(String[] args) { 
 
-		String value = input.nextLine(); 
-		System.out.println("You entered: " + value); 
-
-		List<String> list = new ArrayList<String>();
+		List<Person> personsList = new ArrayList<>();
 
 		File file = new File("D:/PROGRAME/eclipse-workspace/MyFirstProject/src/tutorials/ioana.txt");
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -26,36 +21,15 @@ public class FileReading {
 			while ((line = br.readLine()) != null) {
 				// splitting a line in a file and adding it to the list
 				String[] tokens = line.split("/");
-				list.add(tokens[0]);
+				
+				// making a new object and adding to the list
+				Person person = new Person(tokens[0], Integer.parseInt(tokens[1]));
+				personsList.add(person);
 			}
-		
-			
-			
-
 		} catch (FileNotFoundException e) {
 			System.out.println("Can't find file: " + file.toString());
 		} catch (IOException e) {
 			System.out.println("Unable to read file: " + file.toString());
 		}
-
-		input.close();
-
-		/**
-		 * Scanner File fisier= new
-		 * File("D:/PROGRAME/eclipse-workspace/MyFirstProject/src/tutorials/ioana.txt");
-		 * Scanner scan= new Scanner(fisier);
-		 * 
-		 * while(scan.hasNextLine()) System.out.println(scan.nextLine());
-		 */
-
-		/*
-		 * File Reader // reads the first line of the file
-		 * 
-		 * FileReader fr= new FileReader(
-		 * "D:/PROGRAME/eclipse-workspace/MyFirstProject/src/tutorials/ioana.txt");
-		 * 
-		 * int i; while ((i=fr.read()) != -1) System.out.println((char)i);
-		 */
-
 	}
 }
