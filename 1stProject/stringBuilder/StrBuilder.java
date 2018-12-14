@@ -1,4 +1,4 @@
-package lessons;
+package stringBuilder;
 
 class Frog {
 	private String name;
@@ -17,7 +17,7 @@ class Frog {
 	}
 }
 
-public class ToString {
+public class StrBuilder {
 	public static void main(String[] args) {
 		Frog frog1 = new Frog("Freddy", 7);
 		Frog frog2 = new Frog("Ronnie", 12);

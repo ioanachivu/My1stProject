@@ -1,4 +1,4 @@
-package lessons;
+package file;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import lessons.Person;
 
 public class FileReading {
 	public static void main(String[] args) { 

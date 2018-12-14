@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-class Scriere {
+class Writing {
 	public static void main(String[] args) {
 		System.out.println("writing shit");
 		

@@ -1,4 +1,4 @@
-package lessons;
+package stringBuilder;
 
 public class StringBuilderFormat {
 	public static void main(String[] args) {
@@ -12,7 +12,7 @@ public class StringBuilderFormat {
 		
 		System.out.println(sb.toString());
 		
-		//using methos-chaning:
+		//using methods-chaining:
 		StringBuilder s = new StringBuilder();
 
 		s.append("we like java").append("...").append("don't get desouraged");

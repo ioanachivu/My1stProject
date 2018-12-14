@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-class Citire {
+class Reading {
 	public static void main(String[] args) {
 		System.out.println("reading shit");
 		

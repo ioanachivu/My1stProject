@@ -1,12 +1,12 @@
-package lessons;
+
 
 public class Person {
 	String name;
 	int age;
 
-	public Person(String name, int age) {
-		this.name = name;
-		this.age = age;
+	public Person (String name, int age) {
+		this.name=name;
+		this.age=age;
 		System.out.println("constructor folosit");
 	}
 
@@ -25,9 +25,13 @@ public class Person {
 	public void setAge(int age) {
 		this.age = age;
 	}
-
+	
 	public void sayHelloTo(Person person) {
-		System.out.println(getName() + " sais hello to " + person.getName());
+		System.out.println(getName()+" sais hello to "+person.getName());
 	}
 
+	
+	
 }
+	
+

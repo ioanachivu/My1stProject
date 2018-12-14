@@ -1,4 +1,4 @@
-package lessons;
+package file;
 
 import java.io.BufferedWriter;
 import java.io.File;

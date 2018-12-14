@@ -1,4 +1,4 @@
-package lessons;
+package anonymousClasses;
 
 class Machine {
 	public void start() {
