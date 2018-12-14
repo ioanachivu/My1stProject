@@ -1,4 +1,4 @@
-package lessons;
+package switchEx;
 
 import java.util.Scanner;
 
