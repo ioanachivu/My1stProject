@@ -14,15 +14,11 @@ public class StringBuilderFormat {
 		
 		//using methods-chaining:
 		StringBuilder s = new StringBuilder();
-
 		s.append("we like java").append("...").append("don't get desouraged");
-
 		System.out.println(s.toString());
 
 		// Formatting:
 		System.out.print("some text\t here was a tab \n entered new line");
-		System.out.println("/because we didn't use 'println' we dont have a new line");
-		
 		System.out.printf("total cost is %d & getting down to %d ready for %d\n", 100,50,20);
 		
 		for (int i=0; i<10; i++) {
